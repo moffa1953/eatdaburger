@@ -1,0 +1,57 @@
+
+	<div class="container">
+		<center><h1>Eat A Burger</h1></center>	
+
+		<center><img src="assets/images/hamburger.jpeg"></center>
+  
+        	<div class = 'burgerBox'>
+        		<div id = 'bbDisplay'>
+                    {{#each burgers}}
+                        {{#unless devour}}
+                             <div class='burgerItem'>{{id}}. {{burger_name}}</div>
+                        {{/unless}}
+                    {{/each}}
+        		</div>
+        	</div>
+
+        	<div class = 'buttonBox'>
+                            {{#each burgers}}
+                                {{#unless devour}}                 
+                    <form method='POST' action='/api/burgers/{{id}}'>
+                		<div id='buttDisplay'>                
+                                    <button type='submit' class='buttonItem'>Devour</button>
+                                                         			
+                		</div>
+                    </form>
+                                {{/unless}}
+                            {{/each}}  
+
+        	</div>
+
+        	<div class = 'dBox'>
+				<div id='ddDisplay'>
+                    {{#each burgers}}
+                        {{#if this.devour}}
+                             <div class='devourItem'>{{id}}. {{burger_name}}</div>
+                        {{/if}}
+                    {{/each}} 					
+				</div>
+        	</div>
+ 
+		    <div style='clear:both;'></div>
+
+			<br>
+
+			<center>
+
+				<h2>Create A Burger</h2>
+				<form method='POST' action="/api/newburgers">
+						<textarea name="newBurger" rows='3' cols='50' placeholder='Enter your favorite burger'></textarea>
+						<br>
+						<button type = 'submit'>Enter</button>
+
+				</form>
+
+			</center>
+
+	</div>
